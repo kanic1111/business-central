@@ -41,14 +41,14 @@ if [ -f docker.pid ]; then
     container_id=$(cat docker.pid)
     echo "Stopping container $container_id..."
     # In case you want to use Docker please use `docker` instead of `podman`
-    podman stop $container_id
+    sudo docker stop $container_id
     rm -f docker.pid
 fi
 
 # Start the JBoss jBPM Workbench docker container
 echo "Starting $CONTAINER_NAME docker container using:"
 echo "** Container name: $CONTAINER_NAME"
-image_business_central=$(podman run -P -d --network=host --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG)
+image_business_central=$(sudo docker run -P -d --network=host --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG)
 echo $image_business_central > docker.pid
 
 # End
