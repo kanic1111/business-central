@@ -17,10 +17,10 @@ ENV JAVA_OPTS -Xms256m -Xmx2048m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=512m
 ADD etc/kie-fs-realm-users $JBOSS_HOME/standalone/configuration/kie-fs-realm-users
 ADD etc/jbpm-custom.cli $JBOSS_HOME/bin/jbpm-custom.cli
 
-# Added files are chowned to root user, change it to the jboss one.
+# Added files are chowned to root user, change it to the jboss one. 
 USER root
 RUN chown -R jboss:jboss $JBOSS_HOME/standalone/configuration/kie-fs-realm-users
-
+RUN sed -i -e 's/8443/8444/g' /opt/jboss/wildfly/standalone/configuration/standalone.xml
 # Switchback to jboss user
 USER jboss
 RUN $JBOSS_HOME/bin/jboss-cli.sh --file=$JBOSS_HOME/bin/jbpm-custom.cli && \
