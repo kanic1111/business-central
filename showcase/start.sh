@@ -48,7 +48,7 @@ fi
 # Start the JBoss jBPM Workbench docker container
 echo "Starting $CONTAINER_NAME docker container using:"
 echo "** Container name: $CONTAINER_NAME"
-image_business_central=$(sudo docker run -P -d --network=host --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG)
+image_business_central=$(sudo docker run -p 8080:8080 -p 8001:8001 -d --name drools-wb  $IMAGE_NAME:$IMAGE_TAG)
 echo $image_business_central > docker.pid
 
 # End
