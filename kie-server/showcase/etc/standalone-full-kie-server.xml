@@ -37,6 +37,16 @@
         <extension module="org.wildfly.extension.undertow"/>
         <extension module="org.wildfly.iiop-openjdk"/>
     </extensions>
+     <system-properties>
+        <property name="org.kie.server.controller" value="http://10.0.0.133:8080/business-central/rest/controller"/>
+        <property name="org.kie.server.location" value="http://10.0.0.133:8180/kie-server/services/rest/server"/>
+        <property name="org.kie.server.user" value="admin"/>
+        <property name="org.kie.server.pwd" value="admin"/>
+        <property name="org.kie.server.controller.user" value="admin"/>
+        <property name="org.kie.server.controller.pwd" value="admin"/>
+        <property name="org.kie.kafka.server.ext.disabled" value="false"/>
+        <property name="org.kie.server.jbpm-kafka.ext.bootstrap.servers" value="10.0.0.133:9092"/>
+    </system-properties>
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
